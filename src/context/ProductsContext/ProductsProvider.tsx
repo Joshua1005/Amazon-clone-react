@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { useAxios } from "@/hooks/useAxios";
+import axios from "axios";
 
 type Rating = {
   stars: number;
@@ -18,9 +18,7 @@ export type Product = {
 
 type ProductsContextType = {
   products: Product[];
-  setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
-  isError: boolean;
-  isLoading: boolean;
+  setProducts: (product: Product[]) => void;
 };
 
 export const ProductsContext = createContext<ProductsContextType | null>(null);
@@ -31,18 +29,26 @@ export const ProductsProvider = ({
   children: React.ReactNode;
 }): JSX.Element => {
   const [productsState, setProducts] = useState<Product[]>([]);
-  const { data, isError, isLoading } = useAxios({
-    url: "http://localhost:3000/products",
-  });
+  const url = "http://localhost:3000/products";
 
   useEffect(() => {
-    setProducts(data);
-  }, [data]);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(url);
+        if (response.status === 200) {
+          const data = await response.data;
+          setProducts(data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
-    <ProductsContext.Provider
-      value={{ products: productsState, setProducts, isError, isLoading }}
-    >
+    <ProductsContext.Provider value={{ products: productsState, setProducts }}>
       {children}
     </ProductsContext.Provider>
   );

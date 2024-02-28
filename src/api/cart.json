@@ -1,22 +1,16 @@
 {
   "cart": [
     {
-      "id": "9bfafc08-b106-49b4-aa24-98047088031c",
+      "id": "9cf80dd8-a3d4-44fa-90d8-1d59463484d6",
       "productId": "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-      "quantity": 8,
+      "quantity": 9,
       "deliveryOptionId": "1"
     },
     {
-      "id": "0fe97ae5-49ed-4a83-8f27-0908dea4acb3",
-      "productId": "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
-      "quantity": 11,
-      "deliveryOptionId": "1"
-    },
-    {
-      "id": "9fe5faf0-7e24-4600-95f5-7446aecde59d",
+      "id": "27c172a6-a38e-458d-9a42-b2ee8203bd2c",
       "productId": "15b6fc6f-327a-4ec4-896f-486349e85a3d",
-      "quantity": 5,
-      "deliveryOptionId": "1"
+      "quantity": 7,
+      "deliveryOptionId": "3"
     }
   ]
 }

@@ -1,8 +1,13 @@
+import { CartItem } from "@/context/CartContext/CartProvider";
 import useCart from "../context/CartContext/useCart";
 import { useState } from "react";
 
-const QuantityControl = ({ cartItem }) => {
-  const { id, productId, quantity, deliveryOptionId } = cartItem;
+type QuantityControlProps = {
+  cartItem: CartItem;
+};
+
+const QuantityControl = ({ cartItem }: QuantityControlProps) => {
+  const { quantity } = cartItem;
   const [updatedQuantity, setUpdatedQuantity] = useState(0);
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -48,7 +53,7 @@ const QuantityControl = ({ cartItem }) => {
         {isUpdating ? "Save" : "Update"}
       </button>
       <button
-        onClick={() => removeItem({ productId, id })}
+        onClick={() => removeItem({ ...cartItem })}
         className="text-sky-700 hover:text-orange-600 transition-all"
       >
         Delete

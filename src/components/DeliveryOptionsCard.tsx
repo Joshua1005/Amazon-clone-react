@@ -1,8 +1,18 @@
 import useCart from "../context/CartContext/useCart";
 import dayjs from "dayjs";
 import formatCurrency from "../utilities/formatCurrency";
+import { DeliveryOptions } from "@/context/DeliveryContext/DeliveryProvider";
+import { CartItem } from "@/context/CartContext/CartProvider";
 
-const DeliveryOptionsCard = ({ deliveryOption, cartItem }) => {
+type DeliveryOptionsCardProps = {
+  deliveryOption: DeliveryOptions;
+  cartItem: CartItem;
+};
+
+const DeliveryOptionsCard = ({
+  deliveryOption,
+  cartItem,
+}: DeliveryOptionsCardProps) => {
   const { productId, deliveryOptionId } = cartItem;
   const { updateItem } = useCart();
 

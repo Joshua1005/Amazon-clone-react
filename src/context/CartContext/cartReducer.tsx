@@ -1,13 +1,21 @@
-const ACTIONS = {
-  GET_DATA: "GET_DATA",
-  ADD_ITEM: "ADD_ITEM",
-  UPDATE_ITEM: "UPDATE_ITEM",
-  REMOVE_ITEM: "REMOVE_ITEM",
-};
+import { CartItem, Payload } from "./CartProvider";
+
+enum ACTIONS {
+  GET_DATA = "GET_DATA",
+  ADD_ITEM = "ADD_ITEM",
+  UPDATE_ITEM = "UPDATE_ITEM",
+  REMOVE_ITEM = "REMOVE_ITEM",
+}
+
+type Actions =
+  | { type: ACTIONS.GET_DATA; payload: CartItem[] }
+  | { type: ACTIONS.ADD_ITEM; payload: Payload }
+  | { type: ACTIONS.UPDATE_ITEM; payload: Payload }
+  | { type: ACTIONS.REMOVE_ITEM; payload: Payload };
 
 export const { GET_DATA, ADD_ITEM, REMOVE_ITEM, UPDATE_ITEM } = ACTIONS;
 
-export const cartReducer = (cart, { type, payload }) => {
+export const cartReducer = (cart: CartItem[], { type, payload }: Actions) => {
   switch (type) {
     case GET_DATA:
       return [...payload];

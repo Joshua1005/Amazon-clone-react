@@ -3,7 +3,7 @@ import mobileLogo from "../assets/images/amazon-mobile-logo-white.png";
 import searchIcon from "../assets/images/icons/search-icon.png";
 import cartIcon from "../assets/images/icons/cart-icon.png";
 import useCart from "../context/CartContext/useCart";
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSearch } from "@/context/SearchContext/useSearch";
 import { Input } from "./ui/input";
@@ -58,7 +58,7 @@ const MiddleSection = () => {
 };
 
 const RightSection = () => {
-  const { cart, getTotalItem } = useCart();
+  const { getTotalItem } = useCart();
   const [isOpen, setIsOpen] = useState(false);
 
   return (

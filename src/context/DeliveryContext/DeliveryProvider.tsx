@@ -1,10 +1,28 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 
-export const DeliveryContext = createContext(null);
+export type DeliveryOptions = {
+  id: string;
+  deliveryDay: number;
+  costCents: number;
+};
 
-export const DeliveryProvider = ({ children }) => {
-  const [deliveryOptionsState, setDeliveryOption] = useState([]);
+type DeliveryType = {
+  deliveryOptions: DeliveryOptions[];
+  setDeliveryOption: (options: DeliveryOptions[]) => void;
+};
+
+type DeliveryProps = {
+  children: ReactNode;
+};
+
+const initialState: [] = [];
+
+export const DeliveryContext = createContext<DeliveryType | null>(null);
+
+export const DeliveryProvider = ({ children }: DeliveryProps) => {
+  const [deliveryOptionsState, setDeliveryOption] =
+    useState<DeliveryOptions[]>(initialState);
   const url = "http://localhost:3001/deliveryOptions";
 
   useEffect(() => {

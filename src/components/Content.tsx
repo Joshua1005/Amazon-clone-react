@@ -3,10 +3,9 @@ import { useProducts } from "../context/ProductsContext/useProducts";
 import { useSearch } from "@/context/SearchContext/useSearch";
 import { Toaster } from "./ui/toaster";
 import NotFound from "./NotFound";
-import Loader from "./Loader";
 
 const Content = () => {
-  const { products, isLoading } = useProducts();
+  const { products } = useProducts();
 
   const { searchParams } = useSearch();
   const searchText = searchParams.get("search") || "";
@@ -21,8 +20,6 @@ const Content = () => {
 
     return matchedKeyword;
   });
-
-  isLoading && <Loader />;
 
   filteredItems && <NotFound />;
 

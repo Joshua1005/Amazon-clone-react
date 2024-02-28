@@ -10,7 +10,7 @@ const OrderSummary = () => {
   const { products } = useProducts();
   const [isOpen, setIsOpen] = useState(false);
 
-  const totalPriceCents = cart.reduce((total, cartItem) => {
+  const totalPriceCents = cart.reduce((total, cartItem): any => {
     const matchedProducts = products.find(
       (product) => product.id === cartItem.productId
     );
@@ -18,7 +18,7 @@ const OrderSummary = () => {
       return (total += cartItem.quantity * matchedProducts.priceCents);
   }, 0);
 
-  const totalCostCents = cart.reduce((total, cartItem) => {
+  const totalCostCents = cart.reduce((total, cartItem): any => {
     const matchedOptions = deliveryOptions.find(
       (deliveryOption) => deliveryOption.id === cartItem.deliveryOptionId
     );

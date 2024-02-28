@@ -11,34 +11,34 @@ import CheckoutContent from "./components/CheckoutContent";
 const App = () => {
   return (
     <Router>
-      <SearchProvider>
-        <ProductsProvider>
-          <CartProvider>
-            <DeliveryProvider>
-              <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <>
+      <ProductsProvider>
+        <CartProvider>
+          <DeliveryProvider>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <SearchProvider>
                       <Header />
                       <Content />
-                    </>
-                  }
-                />
-                <Route
-                  path="checkout"
-                  element={
-                    <>
-                      <CheckoutHeader />
-                      <CheckoutContent />
-                    </>
-                  }
-                />
-              </Routes>
-            </DeliveryProvider>
-          </CartProvider>
-        </ProductsProvider>
-      </SearchProvider>
+                    </SearchProvider>
+                  </>
+                }
+              />
+              <Route
+                path="checkout"
+                element={
+                  <>
+                    <CheckoutHeader />
+                    <CheckoutContent />
+                  </>
+                }
+              />
+            </Routes>
+          </DeliveryProvider>
+        </CartProvider>
+      </ProductsProvider>
     </Router>
   );
 };

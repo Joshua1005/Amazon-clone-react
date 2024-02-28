@@ -77,7 +77,7 @@ const ProductsCard = ({ product }: ProductProps) => {
                 id: inCart.id,
                 productId: id,
                 quantity: inCart.quantity + parseFloat(q.textContent),
-                deliveryOptionId: "1",
+                deliveryOptionId: inCart.deliveryOptionId,
               });
             } else {
               addItem({

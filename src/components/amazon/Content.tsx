@@ -1,8 +1,8 @@
-import ProductsCard from "./ProductsCard";
-import { useProducts } from "../context/ProductsContext/useProducts";
+import ProductsCard from "./Content/ProductsCard";
+import { useProducts } from "../../context/ProductsContext/useProducts";
 import { useSearch } from "@/context/SearchContext/useSearch";
-import { Toaster } from "./ui/toaster";
-import NotFound from "./NotFound";
+import { Toaster } from "../ui/toaster";
+import NotFound from "../NotFound";
 
 const Content = () => {
   const { products } = useProducts();
@@ -21,7 +21,7 @@ const Content = () => {
     return matchedKeyword;
   });
 
-  filteredItems && <NotFound />;
+  !filteredItems && <NotFound />;
 
   return (
     <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 mt-16">

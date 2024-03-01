@@ -72,7 +72,6 @@ const CartProvider = ({ children }: CartProps) => {
   };
 
   const addItem = async (payload: Payload) => {
-    console.log(payload);
     try {
       const response = await axios.post(url, payload);
       if (response.data) dispatch({ type: ADD_ITEM, payload });

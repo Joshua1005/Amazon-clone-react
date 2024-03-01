@@ -1,15 +1,9 @@
 {
   "cart": [
     {
-      "id": "9cf80dd8-a3d4-44fa-90d8-1d59463484d6",
+      "id": "85ece4ac-3d64-4649-a64f-7a4907eb81c6",
       "productId": "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-      "quantity": 9,
-      "deliveryOptionId": "1"
-    },
-    {
-      "id": "27c172a6-a38e-458d-9a42-b2ee8203bd2c",
-      "productId": "15b6fc6f-327a-4ec4-896f-486349e85a3d",
-      "quantity": 7,
+      "quantity": 11,
       "deliveryOptionId": "3"
     }
   ]

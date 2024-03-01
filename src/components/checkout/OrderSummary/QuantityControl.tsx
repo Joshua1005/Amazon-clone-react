@@ -1,6 +1,7 @@
 import { CartItem } from "@/context/CartContext/CartProvider";
-import useCart from "../context/CartContext/useCart";
+import { useCart } from "../../../context/CartContext/useCart";
 import { useState } from "react";
+import { Input } from "../../ui/input";
 
 type QuantityControlProps = {
   cartItem: CartItem;
@@ -16,10 +17,13 @@ const QuantityControl = ({ cartItem }: QuantityControlProps) => {
   return (
     <>
       {isUpdating ? (
-        <input
-          className="w-14 border-2 rounded-md"
+        <Input
           min="1"
           max="999"
+          type="number"
+          name="quantity"
+          id="quantity"
+          className="max-w-14"
           defaultValue={quantity}
           onChange={(e) => setUpdatedQuantity(parseInt(e.target.value))}
           onKeyDown={(e) => {
@@ -33,7 +37,6 @@ const QuantityControl = ({ cartItem }: QuantityControlProps) => {
                 : setUpdatedQuantity(0);
             }
           }}
-          type="number"
         />
       ) : (
         <span>{quantity}</span>

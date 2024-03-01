@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import desktopLogo from "../assets/images/amazon-logo.png";
-import mobileLogo from "../assets/images/amazon-mobile-logo.png";
-import lockIcon from "../assets/images/icons/checkout-lock-icon.png";
-import useCart from "../context/CartContext/useCart";
+import desktopLogo from "../../assets/images/amazon-logo.png";
+import mobileLogo from "../../assets/images/amazon-mobile-logo.png";
+import lockIcon from "../../assets/images/icons/checkout-lock-icon.png";
+import { useCart } from "../../context/CartContext/useCart";
 
 const CheckoutHeader = () => {
   const { getTotalItem } = useCart();
@@ -14,7 +14,7 @@ const CheckoutHeader = () => {
           <img className="md:hidden block h-10" src={mobileLogo} />
         </Link>
       </section>
-      <section className="text-2xl font-semibold">
+      <section className="lg:text-2xl md:text-xl sm:text-lg font-semibold">
         <span>Checkout</span>(
         <Link to="/" className="text-sky-700">
           {getTotalItem}

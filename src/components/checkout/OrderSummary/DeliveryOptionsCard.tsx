@@ -1,8 +1,10 @@
-import useCart from "../context/CartContext/useCart";
+import { useCart } from "../../../context/CartContext/useCart";
 import dayjs from "dayjs";
-import formatCurrency from "../utilities/formatCurrency";
+import formatCurrency from "../../../utilities/formatCurrency";
 import { DeliveryOptions } from "@/context/DeliveryContext/DeliveryProvider";
 import { CartItem } from "@/context/CartContext/CartProvider";
+import { RadioGroupItem } from "../../ui/radio-group";
+import { Label } from "../../ui/label";
 
 type DeliveryOptionsCardProps = {
   deliveryOption: DeliveryOptions;
@@ -31,14 +33,13 @@ const DeliveryOptionsCard = ({
           deliveryOptionId: id,
         });
       }}
-      className="flex gap-2 cursor-pointer"
+      className="flex gap-2 cursor-pointer items-center"
     >
-      <input
+      <RadioGroupItem
+        className="text-foreground"
         checked={isChecked}
-        className="w-5"
-        type="radio"
         id={radioId}
-        name={productId}
+        value={productId}
         onChange={() =>
           updateItem({
             ...cartItem,
@@ -46,13 +47,13 @@ const DeliveryOptionsCard = ({
           })
         }
       />
-      <div className="leading-5">
+      <Label htmlFor={radioId} className="leading-5">
         <div className="font-semibold text-green-700">{deliveryDate}</div>
         <div className="opacity-60">
           {costCents === 0 ? "FREE" : `$${formatCurrency(costCents)} - `}{" "}
           Shipping
         </div>
-      </div>
+      </Label>
     </div>
   );
 };

@@ -13,6 +13,7 @@ import {
   cartReducer,
 } from "./cartReducer";
 import axios from "axios";
+import useAxios from "@/hooks/useAxios";
 
 export type CartItem = {
   id: string;
@@ -40,32 +41,33 @@ type CartProps = {
   children: ReactNode;
 };
 
-const initialState: [] = [];
+const initialState: [] | CartItem[] = [];
 
 const CartContext = createContext<CartType | null>(null);
 
 const CartProvider = ({ children }: CartProps) => {
   const [cart, dispatch] = useReducer(cartReducer, initialState);
   const url = "http://localhost:3003/cart";
+  const { data, error, isLoading } = useAxios({ url });
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(url);
-        const data = await response.data;
-        if (response.data) dispatch({ type: GET_DATA, payload: data });
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, []);
+    // const fetchData = async () => {
+    //   try {
+    //     const response = await axios.get(url);
+    //     const data = await response.data;
+    //     if (response.data) dispatch({ type: GET_DATA, payload: data });
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // };
+    // fetchData();
+    if (data) dispatch({ type: GET_DATA, payload: data });
+  }, [data, error, isLoading]);
 
   const updateItem = async (payload: Payload) => {
     try {
-      const response = await axios.put(`${url}/${payload.id}`, payload);
-      if (response.data) dispatch({ type: UPDATE_ITEM, payload: payload });
+      const response = await axios.patch(`${url}/${payload.id}`, payload);
+      if (response.data) dispatch({ type: UPDATE_ITEM, payload });
     } catch (error) {
       console.error(error);
     }

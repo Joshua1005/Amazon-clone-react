@@ -1,3 +1,4 @@
+import useAxios from "@/hooks/useAxios";
 import axios from "axios";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
@@ -24,20 +25,21 @@ export const DeliveryProvider = ({ children }: DeliveryProps) => {
   const [deliveryOptionsState, setDeliveryOption] =
     useState<DeliveryOptions[]>(initialState);
   const url = "http://localhost:3001/deliveryOptions";
+  const { data, error, isLoading } = useAxios({ url });
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(url);
-        const data = await response.data;
-        if (response.data) setDeliveryOption(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, []);
+    // const fetchData = async () => {
+    //   try {
+    //     const response = await axios.get(url);
+    //     const data = await response.data;
+    //     if (response.data) setDeliveryOption(data);
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // };
+    // fetchData();
+    if (data) setDeliveryOption(data);
+  }, [data, error, isLoading]);
 
   return (
     <DeliveryContext.Provider

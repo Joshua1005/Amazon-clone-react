@@ -40,7 +40,11 @@ const PaymentSummary = () => {
               </h4>
               <section className="p-5 flex lg:gap-5 gap-3 lg:justify-between flex-wrap">
                 <article className="w-24 mb-5">
-                  <img className="max-w-full max-h-full" src={image} />
+                  <img
+                    loading="lazy"
+                    className="max-w-full max-h-full"
+                    src={image}
+                  />
                 </article>
                 <article className="flex-1">
                   <h4 className="scroll-m-20 lg:text-base lg:leading-none md:text-base text-sm font-semibold tracking-tight line-clamp-2 h-12 leading-none">

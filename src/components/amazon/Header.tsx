@@ -51,9 +51,9 @@ const MiddleSection = () => {
       <Button
         className="rounded-s-none rounded-e-md"
         type="submit"
-        onClick={() => setSearchParams({ search: query })}
+        onClick={(e) => searchProducts(e)}
       >
-        <img className="w-5" src={searchIcon} />
+        <img loading="lazy" className="w-5" src={searchIcon} />
       </Button>
     </form>
   );
@@ -81,7 +81,7 @@ const RightSection = () => {
           <span className="absolute -top-1 left-[13px] w-5 text-orange-500 font-bold text-center">
             {getTotalItem}
           </span>
-          <img className="w-10" src={cartIcon} />
+          <img loading="lazy" className="w-10" src={cartIcon} />
           <span className="font-semibold self-end text-sm">Cart</span>
         </Link>
       </section>

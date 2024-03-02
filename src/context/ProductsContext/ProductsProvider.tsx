@@ -1,5 +1,5 @@
-import { createContext, useState, useEffect } from "react";
-import axios from "axios";
+import { createContext, useState, useEffect, useMemo } from "react";
+import useAxios, { AxiosState } from "@/hooks/useAxios";
 
 type Rating = {
   stars: number;
@@ -16,7 +16,7 @@ export type Product = {
   sizeChartLink?: string;
 };
 
-type ProductsContextType = {
+type ProductsContextType = AxiosState & {
   products: Product[];
   setProducts: (product: Product[]) => void;
 };
@@ -29,26 +29,37 @@ export const ProductsProvider = ({
   children: React.ReactNode;
 }): JSX.Element => {
   const [productsState, setProducts] = useState<Product[]>([]);
-  const url = "http://localhost:3000/products";
+
+  const url = `http://localhost:3000/products`;
+  const { data, error, isLoading } = useAxios({ url });
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(url);
-        if (response.status === 200) {
-          const data = await response.data;
-          setProducts(data);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
+    // const fetchData = async () => {
+    //   try {
+    //     const response = await axios.get(url);
+    //     if (response.status === 200) {
+    //       const data = await response.data;
+    //       setProducts(data);
+    //     }
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // };
+    // fetchData();
 
-    fetchData();
-  }, []);
+    if (data) setProducts(data);
+  }, [data, error, isLoading]);
 
   return (
-    <ProductsContext.Provider value={{ products: productsState, setProducts }}>
+    <ProductsContext.Provider
+      value={{
+        products: productsState,
+        setProducts,
+        data,
+        error,
+        isLoading,
+      }}
+    >
       {children}
     </ProductsContext.Provider>
   );

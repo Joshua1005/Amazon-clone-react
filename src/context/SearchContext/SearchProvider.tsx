@@ -1,5 +1,5 @@
 import { SetURLSearchParams, useSearchParams } from "react-router-dom";
-import { createContext } from "react";
+import { ReactNode, createContext } from "react";
 
 type SearchContextType = {
   searchParams: URLSearchParams;
@@ -8,7 +8,7 @@ type SearchContextType = {
 
 export const SearchContext = createContext<SearchContextType | null>(null);
 
-export const SearchProvider = ({ children }: { children: React.ReactNode }) => {
+export const SearchProvider = ({ children }: { children: ReactNode }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   return (

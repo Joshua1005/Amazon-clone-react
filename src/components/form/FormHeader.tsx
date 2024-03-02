@@ -6,7 +6,7 @@ const FormHeader = () => {
     <>
       <header className="container h-16 flex justify-center items-center">
         <Link to="/">
-          <img className="w-24" src={desktopLogo} />
+          <img loading="lazy" className="w-24" src={desktopLogo} />
         </Link>
       </header>
     </>

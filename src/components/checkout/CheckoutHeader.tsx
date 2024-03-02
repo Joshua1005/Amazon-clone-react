@@ -10,8 +10,16 @@ const CheckoutHeader = () => {
     <header className="flex justify-between items-center h-16 md:px-8 px-4 container mx-auto">
       <section>
         <Link to="/">
-          <img className="md:block hidden w-24" src={desktopLogo} />
-          <img className="md:hidden block h-10" src={mobileLogo} />
+          <img
+            loading="lazy"
+            className="md:block hidden w-24"
+            src={desktopLogo}
+          />
+          <img
+            loading="lazy"
+            className="md:hidden block h-10"
+            src={mobileLogo}
+          />
         </Link>
       </section>
       <section className="lg:text-2xl md:text-xl sm:text-lg font-semibold">
@@ -23,7 +31,7 @@ const CheckoutHeader = () => {
         )
       </section>
       <section>
-        <img src={lockIcon} />
+        <img loading="lazy" src={lockIcon} />
       </section>
     </header>
   );

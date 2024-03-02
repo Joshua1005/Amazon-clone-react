@@ -127,11 +127,11 @@ const ProductsCard = ({ product }: ProductProps) => {
     // </Card>
     <article className="border-b border-r border-gray-300 p-5 flex flex-col">
       <section className="flex justify-center items-center h-40 mb-1">
-        <img className="max-w-full max-h-full" src={image} />
+        <img loading="lazy" className="max-w-full max-h-full" src={image} />
       </section>
       <p className="line-clamp-2 leading-5 h-10">{name}</p>
       <section className="flex items-center gap-1 mb-4">
-        <img className="w-24" src={ratingUrl} />
+        <img loading="lazy" className="w-24" src={ratingUrl} />
         <span className="text-sky-500 cursor-pointer mt-[2px]">{count}</span>
       </section>
       <p className="font-bold mb-4">${formatCurrency(priceCents)}</p>
